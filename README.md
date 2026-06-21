@@ -13,7 +13,7 @@
 ![Employee](screenshots/employee.png)
 
 ### Designation Page
-![Designation](screenshots/designation.png)
+![Designation](screenshots/degination.png)
 
 ### Profile Page
 ![Profile](screenshots/profile.png)
