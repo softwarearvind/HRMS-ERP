@@ -20,3 +20,17 @@
 
 ### User Page
 ![User](screenshots/user.png)
+
+### Task
+![User](screenshots/task.png)
+
+### Task review
+![User](screenshots/task_review.png)
+
+### Task assign Emlpoyee
+![User](screenshots/tasksend.png)
+
+### Task assign update
+![User](screenshots/updatetask.png)
+
+
