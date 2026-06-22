@@ -33,4 +33,34 @@
 ### Task assign update
 ![User](screenshots/updatetask.png)
 
+### Task assign update
+![User](screenshots/clientmanagement.png)
+
+### Task Client Management
+![User](screenshots/clientmanagement.png)
+
+### Task Client Management
+![User](screenshots/project.png)
+
+### Task Client Management
+![User](screenshots/addclient.png)
+
+### Task Client Management
+![User](screenshots/addproject.png)
+
+### Task Client Management
+![User](screenshots/client.png)
+
+### Task Client Management
+![User](screenshots/ClientApproval.png)
+
+### Task Client Management
+![User](screenshots/clientmanagement.png)
+
+### Task Client Management
+![User](screenshots/Clientstaus.png)
+
+### Task Client Management
+![User](screenshots/project.png)
+
 
