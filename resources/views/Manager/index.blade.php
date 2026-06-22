@@ -15,11 +15,11 @@
 
 @include('layout.navber')
 
-@include('layout.maincontent');
+@include('layout.maincontent')
 
 </div>
 
-@include('layout.footer');
+@include('layout.footer')
 
 </body>
 </html>

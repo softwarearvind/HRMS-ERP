@@ -13,6 +13,8 @@ use App\Http\Controllers\SuperAdmin\EmploDeparment;
 use App\Http\Controllers\SuperAdmin\DesignationController;
 use App\Http\Controllers\Employee\AttendanceController;
 use App\Http\Controllers\SuperAdmin\TaskController;
+use App\Http\Controllers\Manager\ClientController;
+use App\Http\Controllers\Manager\ProjectController;
 
 
 
@@ -50,6 +52,11 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
    Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
    Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
 
+   //approved
+   Route::get('/client/approved', [SuperAdminController::class, 'approved'])->name('client.approved');
+   Route::post('/client/approved/{id}', [SuperAdminController::class, 'approvedClient'])->name('client.approve');
+   Route::post('/client/reject/{id}',[SuperAdminController::class,'rejectClient'])->name('client.reject');
+
 
 
     });
@@ -58,14 +65,15 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
     {
     Route::get('/dashboard', [HrDashboardController::class, 'index'])->name('hr.dashboard');
 
+
     });
 
      Route::middleware(['role:Manager'])->prefix('manager')->group(function ()
     {
     Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard');
-    Route::get('/tasks',[TaskController::class,'index'])->name('task.index');
-   Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
-   Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
+    Route::resource('clients', ClientController::class);
+    Route::get('/projects',[ProjectController::class,'index'])->name('projects.index');
+    Route::post('/projects.store',[ProjectController::class,'store'])->name('projects.store');
 
     });
 
