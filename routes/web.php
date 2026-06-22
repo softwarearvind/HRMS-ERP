@@ -12,6 +12,9 @@ use App\Http\Controllers\SuperAdmin\DepartmentsController;
 use App\Http\Controllers\SuperAdmin\EmploDeparment;
 use App\Http\Controllers\SuperAdmin\DesignationController;
 use App\Http\Controllers\Employee\AttendanceController;
+use App\Http\Controllers\SuperAdmin\TaskController;
+
+
 
 
 
@@ -32,18 +35,21 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
     Route::get('employees/create',[EmploDeparment::class,'create'])->name('employees.create');
     Route::post('/employees/store',[EmploDeparment::class,'store'])->name('employees.store');
     Route::delete('/employees.delete/{id}',[EmploDeparment::class,'destroy'])->name('employees.delete');
-
-
     // Assign Manager
-
     Route::get('/assign/manager',[SuperAdminController::class,'assign'])->name('assign.manager');
-    Route::post('/assign-manager', [SuperAdminController::class, 'storeManager'])
-    ->name('assign.manager.store');
+    Route::post('/assign-manager', [SuperAdminController::class, 'storeManager'])->name('assign.manager.store');
 
     //dg
    Route::get('/designation', [DesignationController::class, 'index'])->name('designation.index');
    Route::get('/designation/create',[DesignationController::class,'create'])->name('designation.create');
    Route::post('/designation/store',[DesignationController::class,'store'])->name('designation.store');
+
+   //task
+
+   Route::get('/tasks',[TaskController::class,'index'])->name('task.index');
+   Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
+   Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
+
 
 
     });
@@ -57,6 +63,9 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
      Route::middleware(['role:Manager'])->prefix('manager')->group(function ()
     {
     Route::get('/dashboard', [ManagerController::class, 'index'])->name('manager.dashboard');
+    Route::get('/tasks',[TaskController::class,'index'])->name('task.index');
+   Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
+   Route::delete('/task/destroy/{id}', [TaskController::class, 'destroy'])->name('task.destroy');
 
     });
 
@@ -64,6 +73,8 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
     {
     Route::get('/dashboard', [EmployeeController::class, 'index'])->name('employee.dashboard');
     Route::get('/profile', [EmployeeController::class, 'profile'])->name('profile.index');
+    Route::get('/task/show',[EmployeeController::class,'showtask'])->name('task.show');
+    Route::post('/task/status/{id}', [EmployeeController::class, 'updateStatus'])->name('task.status');
 
     //Attendance
 
