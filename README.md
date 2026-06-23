@@ -63,4 +63,27 @@
 ### Task Client Management
 ![User](screenshots/project.png)
 
+### Meeting Management
+![User](screenshots/create.png)
+
+### Meeting Management
+![User](screenshots/send.png)
+
+### Meeting Management
+![User](screenshots/link.png)
+
+### Meeting Management
+![User](screenshots/listlink.png)
+
+### Meeting Management
+![User](screenshots/verify.png)
+
+### Meeting Management
+![User](screenshots/otp.png)
+
+### Meeting Management
+![User](screenshots/join.png)
+
+
+
 
