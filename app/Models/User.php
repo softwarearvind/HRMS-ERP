@@ -48,4 +48,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function meetingInvites()
+{
+    return $this->hasMany(MeetingInvite::class);
+}
 }

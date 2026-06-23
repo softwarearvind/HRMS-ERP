@@ -15,6 +15,7 @@ use App\Http\Controllers\Employee\AttendanceController;
 use App\Http\Controllers\SuperAdmin\TaskController;
 use App\Http\Controllers\Manager\ClientController;
 use App\Http\Controllers\Manager\ProjectController;
+use App\Http\Controllers\SuperAdmin\MeetingController;
 
 
 
@@ -57,6 +58,13 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
    Route::post('/client/approved/{id}', [SuperAdminController::class, 'approvedClient'])->name('client.approve');
    Route::post('/client/reject/{id}',[SuperAdminController::class,'rejectClient'])->name('client.reject');
 
+   //meeting
+
+    Route::get('/meeting',[MeetingController::class,'index'])->name('meeting.index');
+    Route::get('/meetings/create',[MeetingController::class,'create'])->name('meetings.create');
+    Route::post('/meetings/store',[MeetingController::class,'store'])->name('meetings.store');
+
+
 
 
     });
@@ -74,6 +82,7 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
     Route::resource('clients', ClientController::class);
     Route::get('/projects',[ProjectController::class,'index'])->name('projects.index');
     Route::post('/projects.store',[ProjectController::class,'store'])->name('projects.store');
+    Route::post('/ai/suggest', [ProjectController::class, 'aiSuggest']);
 
     });
 
@@ -89,6 +98,11 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
 Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 Route::post('/attendance/check-in', [AttendanceController::class, 'checkIn'])->name('attendance.checkin');
 Route::post('/attendance/check-out', [AttendanceController::class, 'checkOut'])->name('attendance.checkout');
+
+
+//notification
+Route::get('/join/meeting', [EmployeeController::class, 'notifications'])->name('join.meeting');
+Route::post('/meeting/verifyOtp',[EmployeeController::class,'verifyOtp'])->name('meeting.verifyOtp');
 
     });
 

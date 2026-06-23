@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Task;
+use App\Models\Meeting;
+use App\Models\MeetingInvite;
 
 class EmployeeController extends Controller
 {
@@ -41,4 +43,33 @@ class EmployeeController extends Controller
 
         return redirect()->back()->with('success', 'Task Status Updated');
     }
+
+    public function notifications()
+
+     {
+        $meetings = Meeting::whereHas('invites', function($q){
+        $q->where('user_id', auth()->id());
+    })->get();
+        return view('Employee.Meeting.index', compact('meetings'));
+      }
+
+
+      public function verifyOtp(Request $request)
+{
+    $invite = MeetingInvite::where('meeting_id', $request->meeting_id)
+        ->where('user_id', auth()->id())
+        ->where('otp', $request->otp)
+        ->first();
+
+    if (!$invite) {
+        return back()->with('error', 'Invalid OTP');
+    }
+
+    $invite->update([
+        'otp_verified' => 1,
+        'verified_at' => now()
+    ]);
+
+    return back()->with('success', 'OTP Verified Successfully');
+}
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\Project;
+use App\Services\AIService;
 
 class ProjectController extends Controller
 {
@@ -34,5 +35,13 @@ class ProjectController extends Controller
             'status' => 'new'
         ]);
 
-        return redirect()->back()->with('success','Project Created Successfully');}
+        return redirect()->back()->with('success','Project Created Successfully');
+        }
+
+        public function aiSuggest(Request $request, AIService $ai)
+{
+    $result = $ai->generateText($request->text);
+
+    return response()->json($result);
+}
 }

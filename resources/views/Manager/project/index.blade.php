@@ -178,6 +178,8 @@
                             <input type="text" name="project_name" class="form-control" required>
                         </div>
 
+                        
+
                         <div class="mb-2 col-12">
                             <label>Description</label>
                             <textarea name="description" class="form-control"></textarea>
