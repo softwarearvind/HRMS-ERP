@@ -98,6 +98,7 @@ Route::middleware(['role:Super Admin'])->prefix('super-admin')->group(function (
 Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 Route::post('/attendance/check-in', [AttendanceController::class, 'checkIn'])->name('attendance.checkin');
 Route::post('/attendance/check-out', [AttendanceController::class, 'checkOut'])->name('attendance.checkout');
+Route::get('/face-register/{id}', [AttendanceController::class, 'face'])->name('face.index');
 
 
 //notification

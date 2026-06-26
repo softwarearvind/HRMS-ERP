@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Attendance;
 use App\Models\Employee;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -107,6 +108,14 @@ public function checkOut()
     }
 
     return back()->with('success', 'Check Out Successful');
+}
+
+public function face($id)
+{
+     $employee = Employee::where('user_id', Auth::id())->firstOrFail();
+   
+
+    return view('Employee.face.index', compact('employee'));
 }
 
 

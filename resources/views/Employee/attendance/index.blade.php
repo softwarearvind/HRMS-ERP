@@ -19,12 +19,12 @@
 <div class="container mt-4">
 
     <!-- HEADER -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="mb-4 d-flex justify-content-between align-items-center">
 
         <h3 class="mb-0">Attendance Management</h3>
 
         <!-- ✔ FIX: wrap buttons properly -->
-        <div class="d-flex gap-2">
+        <div class="gap-2 d-flex">
 
             <form action="{{ route('attendance.checkin') }}" method="POST">
                 @csrf
@@ -45,11 +45,11 @@
     </div>
 
     <!-- CARDS -->
-    <div class="row mb-4">
+    <div class="mb-4 row">
 
         <div class="col-md-3">
-            <div class="card text-white bg-success shadow">
-                <div class="card-body text-center">
+            <div class="text-white shadow card bg-success">
+                <div class="text-center card-body">
                     <h5>Present</h5>
                     <h3>{{ $presentCount ?? 0 }}</h3>
                 </div>
@@ -57,8 +57,8 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card text-white bg-danger shadow">
-                <div class="card-body text-center">
+            <div class="text-white shadow card bg-danger">
+                <div class="text-center card-body">
                     <h5>Absent</h5>
                     <h3>{{ $absentCount ?? 0 }}</h3>
                 </div>
@@ -66,8 +66,8 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card text-white bg-warning shadow">
-                <div class="card-body text-center">
+            <div class="text-white shadow card bg-warning">
+                <div class="text-center card-body">
                     <h5>Late</h5>
                     <h3>{{ $lateCount ?? 0 }}</h3>
                 </div>
@@ -75,8 +75,8 @@
         </div>
 
         <div class="col-md-3">
-            <div class="card text-white bg-primary shadow">
-                <div class="card-body text-center">
+            <div class="text-white shadow card bg-primary">
+                <div class="text-center card-body">
                     <h5>Total Today</h5>
                     <h3>{{ $totalCount ?? 0 }}</h3>
                 </div>
@@ -86,15 +86,15 @@
     </div>
 
     <!-- TABLE -->
-    <div class="card shadow border-0">
+    <div class="border-0 shadow card">
 
-        <div class="card-header bg-dark text-white">
+        <div class="text-white card-header bg-dark">
             <h5 class="mb-0">Today Attendance List</h5>
         </div>
 
-        <div class="card-body p-0">
+        <div class="p-0 card-body">
 
-            <table class="table table-hover mb-0">
+            <table class="table mb-0 table-hover">
 
                 <thead class="table-light">
                     <tr>
@@ -102,6 +102,7 @@
                         <th>Date</th>
                         <th>Check In</th>
                         <th>Check Out</th>
+                        <th>Face Recognition</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -126,6 +127,12 @@
                                 {{ $att->check_out ?? '-' }}
                             </span>
                         </td>
+                        <td>
+                            <a href="{{ route('face.index',$att->id) }}"
+                            class="btn btn-primary">
+                                Register Face
+                            </a>
+                        </td>
 
                         <td>
                             @if($att->status == 'Present')
@@ -141,7 +148,7 @@
                 @empty
 
                     <tr>
-                        <td colspan="5" class="text-center text-muted py-3">
+                        <td colspan="5" class="py-3 text-center text-muted">
                             No attendance records found
                         </td>
                     </tr>
