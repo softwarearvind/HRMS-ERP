@@ -84,6 +84,9 @@
 ### Meeting Management
 ![User](screenshots/join.png)
 
+### Face Registration and Camera 
+![User](screenshots/face.png)
+
 
 
 
